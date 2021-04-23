@@ -1,24 +1,29 @@
-  ////////////PROBLEM 1////////////
-  
-  /*
+////////////PROBLEM 1////////////
+
+/*
     Write a function called myFunc. 
     Inside the function, we'll create a variable and another function. 
     Call the variable myStr and set it to the string 'super secret string'. 
     Call the function getSecretString and have it return the myStr variable. 
     myFunc should return getSecretString
   */
-  
-  //CODE HERE
 
-  
-  //Now create a variable called secretString. Its value should be the invocation of myFunc.
+function myFunc() {
+  let myStr = "super secret string";
 
-  //CODE HERE
-  
-  
-  ////////////PROBLEM 2////////////
+  return (getSecretString = () => {
+    return myStr;
+  });
+}
 
-  /*
+//Now create a variable called secretString. Its value should be the invocation of myFunc.
+let secretString = myFunc();
+
+//CODE HERE
+
+////////////PROBLEM 2////////////
+
+/*
     Write a function called lightSwitch. It will return an inner function.
     Create a variable inside lightSwitch called isTheLightOn and set its initial value to the boolean false. 
     Write a function called flipTheSwitch inside lightSwitch. 
@@ -27,34 +32,40 @@
     And if the light is off (false), the string should be 'The light is off'. 
     The lightSwitch function should return flipTheSwitch.
   */
-  
-  //CODE HERE
 
-  
-  //Create a variable called kitchenSwitch whose value is the invocation of lightSwitch.
-  
-  //CODE HERE
+function lightSwitch() {
+  let isTheLightOn = false;
 
-  
-  //Invoke kitchenSwitch.
+  return (flipTheSwitch = () => {
+    isTheLightOn = !isTheLightOn;
+    if (isTheLightOn) {
+      return "The light is on";
+    } else {
+      return "The light is off";
+    }
+  });
+}
 
-  //CODE HERE
-  
-  
-  //Create a variable called bathroomSwitch whose value is the invocation of lightSwitch. 
+//Create a variable called kitchenSwitch whose value is the invocation of lightSwitch.
 
-  //CODE HERE
-  
-  
-  //Invoke bathroomSwitch twice.
-  
-  //CODE HERE
+let kitchenSwitch = lightSwitch();
 
-  
-  
-  ////////////PROBLEM 3////////////
+//Invoke kitchenSwitch.
 
-  /*
+kitchenSwitch();
+
+//Create a variable called bathroomSwitch whose value is the invocation of lightSwitch.
+
+let bathroomSwitch = lightSwitch();
+
+//Invoke bathroomSwitch twice.
+
+bathroomSwitch();
+bathroomSwitch();
+
+////////////PROBLEM 3////////////
+
+/*
     Use the module pattern to create a plant height tracker, name your function 'plantTracker'
     Set up two variables inside plantTracker, 'plant' which should be set to 'fern' and 'height' which should be set to 12
     Return 3 functions using the module pattern
@@ -63,12 +74,26 @@
       - 'prunePlant' should subtract 1 from the height and return the new height
   */
 
-  //CODE HERE
+function plantTracker() {
+  let plant = "fern";
+  let height = 12;
 
+  return {
+    readInfo: function () {
+      return `This is a ${plant} plant that is ${height} inches tall.`;
+    },
+    waterPlant: function () {
+      return (height += 1);
+    },
+    prunePlant: function () {
+      return (height -= 1);
+    },
+  };
+}
 
-  ////////////PROBLEM 4////////////
+////////////PROBLEM 4////////////
 
-  /*
+/*
     Use the module pattern to create an inventory, name the function 'inventory'
     Set up a variable inside inventory called 'products' initialized as an empty array.  
     Return 3 functions using the module pattern
@@ -78,19 +103,30 @@
         - hint: try to find the index of the string first
   */
 
-  //CODE HERE
+function inventory() {
+  let products = [];
 
+  return {
+    readProducts: function () {
+      return products;
+    },
+    addToProducts: function (product) {
+      products.push(product);
+    },
+    deleteFromProducts: function (product) {
+      products.splice(products.indexOf(product), 1);
+    },
+  };
+}
 
-  /*
+/*
     Create a variable called 'shoes' whose value is the invocation of inventory.
   */
 
-  //CODE HERE
+let shoes = inventory();
 
-
-  /*
+/*
     Add an item to your shoes array using the addToProducts function
   */
 
-  //CODE HERE
-
+shoes.addToProducts("vans");
