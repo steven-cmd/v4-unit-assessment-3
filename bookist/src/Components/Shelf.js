@@ -11,15 +11,20 @@ class Shelf extends Component {
     });
 
     return (
-      <div>
-        {mappedTitles}
+      <div class="shelf">
+        <h3>Your Shelf</h3>
         <button
+          className="clear-shelf"
           onClick={() => {
             this.props.clearShelf();
           }}
         >
           clear shelf
         </button>
+        {this.props.shelf.length === 0 && (
+          <p>Click on a book cover to add something. 😩</p>
+        )}
+        {mappedTitles}
       </div>
     );
   }

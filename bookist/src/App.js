@@ -22,7 +22,9 @@ class App extends Component {
   }
 
   addToShelf(bookToAdd) {
-    this.setState({ shelf: [...this.state.shelf, bookToAdd] });
+    if (!this.state.shelf.includes(bookToAdd)) {
+      this.setState({ shelf: [...this.state.shelf, bookToAdd] });
+    }
   }
 
   clearShelf() {
@@ -45,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header></Header>
         <SearchBar
           reset={this.reset}

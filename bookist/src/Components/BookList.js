@@ -8,17 +8,19 @@ class BookList extends Component {
   render() {
     let mappedBooks = this.props.books.map((book, index) => {
       return (
-        <div key={index}>
+        <div className="book" key={index}>
           <img
+            className="book-cover"
             src={book.img}
             onClick={() => this.props.addToShelf(book.title)}
           ></img>
-          <p>{book.title}</p>
-          <p>{book.author}</p>
+          <p>
+            {book.title} by {book.author}
+          </p>
         </div>
       );
     });
-    return <div>{mappedBooks}</div>;
+    return <div className="book-list">{mappedBooks}</div>;
   }
 }
 
